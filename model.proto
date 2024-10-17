@@ -1,0 +1,74 @@
+syntax = "proto3";
+
+message Fabric {
+  int32 id = 1;
+  string hash = 2;
+  float ref = 3;
+  float rf = 4;
+  int32 ip = 5;
+  float density = 6;
+  float thinckness = 7;
+}
+
+message Clothing {
+  int32 id = 1;
+  string hash = 2;
+  int32 covering = 3;
+  repeated Fabric fabric = 4;
+}
+
+message Environment {
+  int32 id = 1;
+  string hash = 2;
+  string typeEnv = 3;
+  int32 temperatureInCelsious = 4;
+  int32 humidityInPercent = 5;
+  int32 windVelocity = 6;
+}
+
+message BodyPart {
+  repeated Environment Environment = 1;
+  repeated Clothing Clothing = 2;
+}
+
+message BodyItem {
+  int32 id = 1;
+  string hash = 2;
+  repeated BodyPart head = 3;
+  repeated BodyPart torso = 4;
+  repeated BodyPart armRight = 5;
+  repeated BodyPart armLeft = 6;
+  repeated BodyPart foreamRight = 7;
+  repeated BodyPart foreamLeft = 8;
+  repeated BodyPart handRight = 9;
+  repeated BodyPart handLeft = 10;
+  repeated BodyPart thingRight = 11;
+  repeated BodyPart thingLeft = 12;
+  repeated BodyPart calfRight = 13;
+  repeated BodyPart calfLeft = 14;
+  repeated BodyPart footRight = 15;
+  repeated BodyPart footLeft = 16;
+}
+
+message Activity {
+  int32 id = 1;
+  string hash = 2;
+  int32 intensityInWatt = 3;
+  int32 durationInMinutes = 4;
+  string typeActivity = 5;
+}
+
+message StageModel {
+  int32 id = 1;
+  string hash = 2;
+  string title = 3;
+  repeated Activity activity = 4;
+  repeated BodyItem body = 5;
+}
+
+message Experiment {
+  int32 id = 1;
+  string hash = 2;
+  string title = 3;
+  repeated StageModel stageModelList = 4;
+}
